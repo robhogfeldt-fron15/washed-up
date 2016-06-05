@@ -1,0 +1,73 @@
+<navigation></navigation>
+
+<div class="container">
+  <div class="row">
+    {{ vm.user }}
+    <div class="col-md-6">
+
+      <h1 class="form-signin-heading">Your profile</h1>
+
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Full name</label>
+          <p class="form-control-static">{{ vm.user.name }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Email</label>
+          <p class="form-control-static">{{ vm.user.email }}</p>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="col-md-6" ng-controller="profileCtrl as vm">
+
+      <h1 class="form-signin-heading">Tvättmaskiner</h1>
+      <button ng-click="vm.getMachines()">Say ddddi</button>
+      <button ng-click="vm.deleteMachine()">Say Hi</button>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Namn</th>
+            <th>Beskrivning</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="w in vm.machines track by $index" ng-click="vm.showSchedule(w)">
+            <td>{{w.name}}</td>
+            <td>{{w.description}}</td>
+            <td>
+              <button class="btn-warning pull-right" ng-click="vm.deleteMachine(w._id)">Ta bort</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form class="form-horizontal" ng-submit="vm.createMachine(vm.machine)">
+        <fieldset>
+          <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">Namn</label>
+            <div class="col-xs-10">
+              <input type="text" class="form-control" ng-model="vm.machine.name" placeholder="Namn">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="control-label col-xs-2">Beskrivning</label>
+            <div class="col-xs-10">
+              <input type="text" class="form-control" ng-model="vm.machine.description" placeholder="Beskrivning">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-10">
+              <button type="submit" class="btn btn-primary">Lägg till</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+    </div>
+
+  </div>
+</div>
