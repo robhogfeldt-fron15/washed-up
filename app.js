@@ -17,6 +17,7 @@ var passport = require('passport');
 // [SH] Bring in the data model
 require('./app_api/models/db');
 require('./app_api/models/machine');
+require('./app_api/models/timeslot');
 // [SH] Bring in the Passport config after model is defined
 require('./app_api/config/passport');
 
@@ -49,7 +50,6 @@ app.use('/api', routesApi);
 // [SH] Otherwise render the index.html page for the Angular SPA
 // [SH] This means we don't have to map all of the SPA routes in Express
 app.use(function(req, res) {
-  console.log('NOOOOO');
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 

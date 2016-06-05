@@ -12,6 +12,10 @@
 
     vm.currentUser = authentication.currentUser();
 
+    vm.logout = authentication.logout();
+
+
+
   }
 
 })();

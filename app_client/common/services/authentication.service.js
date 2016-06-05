@@ -53,10 +53,11 @@
 
     login = function(user) {
       return $http.post('/api/login', user).success(function(data) {
-
         saveToken(data.token);
       });
     };
+
+
 
     logout = function() {
       $window.localStorage.removeItem('mean-token');

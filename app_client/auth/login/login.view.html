@@ -1,14 +1,11 @@
 <navigation></navigation>
-
 <div class="container">
-
   <div class="row">
-    
     <div class="col-md-6">
-
-      <h1 class="form-signin-heading">Sign in</h1>
-      <p class="lead">Not a member? Please <a href="register">register</a> instead.</p>
-  
+      <h1 class="form-signin-heading">Logga in</h1>
+      <p class="lead">Inget konto?
+        <a href="register">Regga dig här</a>
+      </p>
       <form ng-submit="vm.onSubmit()">
         <div class="form-group">
           <label for="email">Email address</label>
@@ -18,10 +15,24 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
         </div>
-        <button type="submit" class="btn btn-default">Sign in!</button>
+        <button type="submit" class="btn btn-default">Logga in!</button>
       </form>
-
+        <div class="col-md-12" style="margin-top: 50px; padding: 20px; background-color: #3FC380">
+      <div class="col-md-6">
+        <div class="form-group">
+          <p>Testa som användare</p>
+          <p>email: user@gmail.com</p>
+          <p>password: user</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <p>Testa som admin</p>
+          <p>email: admin@gmail.com</p>
+          <p>password: admin</p>
+        </div>
+      </div>
     </div>
+      </div>
   </div>
-
 </div>

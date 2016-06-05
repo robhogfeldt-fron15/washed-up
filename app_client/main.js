@@ -24,6 +24,11 @@
         controller: 'profileCtrl',
         controllerAs: 'vm'
       })
+      .when('/user', {
+        templateUrl: '/user/user.view.html',
+        controller: 'userCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
     // use the HTML5 History API
@@ -35,9 +40,10 @@
       if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
         $location.path('/');
       }
+      
     });
   }
-  
+
   angular
     .module('meanApp')
     .config(['$routeProvider', '$locationProvider', config])
