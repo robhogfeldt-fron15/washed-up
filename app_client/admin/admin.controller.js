@@ -2,11 +2,11 @@
 
   angular
     .module('meanApp')
-    .controller('profileCtrl', profileCtrl);
+    .controller('adminCtrl', adminCtrl);
 
-  profileCtrl.$inject = ['$location', 'meanData', 'Machines'];
+  adminCtrl.$inject = ['$location', 'meanData', 'Machines', 'Users'];
 
-  function profileCtrl($location, meanData, Machines) {
+  function adminCtrl($location, meanData, Machines, Users) {
     var vm = this;
 
     vm.user = {};
@@ -18,6 +18,7 @@
       .error(function(e) {
         console.log(e);
       });
+
 
 
     vm.getMachines = function() {
@@ -45,6 +46,17 @@
 
         });
     }
+
+    getUsers();
+
+  function getUsers() {
+    Users.getUsers()
+        .success(function(data) {
+          console.log(data);
+            vm.allUsers = data;
+
+        });
+      };
 
     vm.getMachines();
 

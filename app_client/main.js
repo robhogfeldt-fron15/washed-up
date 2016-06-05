@@ -20,8 +20,8 @@
         controllerAs: 'vm'
       })
       .when('/profile', {
-        templateUrl: '/profile/profile.view.html',
-        controller: 'profileCtrl',
+        templateUrl: '/admin/admin.view.html',
+        controller: 'adminCtrl',
         controllerAs: 'vm'
       })
       .when('/user', {
@@ -37,10 +37,10 @@
 
   function run($rootScope, $location, authentication) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-      if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
-        $location.path('/');
-      }
-      
+      // if ($location.path() === '/profile' && !authentication.isLoggedIn()) {
+      //   $location.path('/');
+      // }
+
     });
   }
 

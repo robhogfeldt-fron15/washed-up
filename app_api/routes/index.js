@@ -6,15 +6,18 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-var ctrlProfile = require('../controllers/profile');
+var ctrlAdmin = require('../controllers/admin');
 var ctrlAuth = require('../controllers/authentication');
 var ctrlMachines = require('../controllers/machines');
 var ctrlUsers = require('../controllers/users');
 var ctrlTimeslots = require('../controllers/timeslots');
 
 
-// profile
-router.get('/profile', auth, ctrlProfile.profileRead);
+// admin
+router.get('/admin', auth, ctrlAdmin.adminRead);
+
+// users
+router.get('/users', ctrlUsers.list);
 
 // machines
 router.get('/machines', ctrlMachines.list);
@@ -24,12 +27,6 @@ router.delete('/machines/:machine_id', ctrlMachines.delete);
 // timeslots
 router.get('/timeslots', ctrlTimeslots.list);
 router.post('/timeslots', ctrlTimeslots.create);
-
-
-// users
-router.get('/users', ctrlUsers.list);
-
-
 
 // authentication
 router.post('/register', ctrlAuth.register);

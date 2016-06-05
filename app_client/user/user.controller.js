@@ -28,6 +28,7 @@
 
       getSlots();
       getMachines();
+  
 
      function getSlots() {
        Timeslot.getTimeslots()
@@ -38,19 +39,17 @@
            });
          };
 
-       function getMachines() {
-
-           Machines.getMachines()
-               .success(function(data) {
-                   vm.machines = data;
-                   console.log(vm.machines);
-                   vm.loading = false;
-               });
-             }
+     function getMachines() {
+         Machines.getMachines()
+             .success(function(data) {
+                 vm.machines = data;
+                 console.log(vm.machines);
+                 vm.loading = false;
+             });
+           }
 
 
         vm.checkDate = function() {
-          console.log(vm.slot.date);
 
           vm.slotArray = [];
           vm.slotArray.push({name:"morgon", isTaken:false });

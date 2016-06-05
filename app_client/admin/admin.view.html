@@ -20,7 +20,7 @@
 
     </div>
 
-    <div class="col-md-6" ng-controller="profileCtrl as vm">
+    <div class="col-md-6" ng-controller="adminCtrl as vm">
 
       <h1 class="form-signin-heading">Tvättmaskiner</h1>
       <button ng-click="vm.getMachines()">Say ddddi</button>
@@ -30,13 +30,32 @@
           <tr>
             <th>Namn</th>
             <th>Beskrivning</th>
-
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="w in vm.machines track by $index" ng-click="vm.showSchedule(w)">
             <td>{{w.name}}</td>
             <td>{{w.description}}</td>
+            <td>
+              <button class="btn-warning pull-right" ng-click="vm.deleteMachine(w._id)">Ta bort</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h1 class="form-signin-heading">Användare</h1>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Namn</th>
+            <th>Mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="u in vm.allUsers track by $index">
+            <td>{{u.name}}</td>
+            <td>{{u.email}}</td>
             <td>
               <button class="btn-warning pull-right" ng-click="vm.deleteMachine(w._id)">Ta bort</button>
             </td>
