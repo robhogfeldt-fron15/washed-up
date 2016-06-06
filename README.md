@@ -20,3 +20,24 @@ maskiner som är upptagna samt kunna boka en tid.
 <p align="center">
   <img src="scr.png" width="350"/>
 </p>
+
+
+# Demo
+
+Det finns 2 konton skapade för att du ska kunna testa.
+
+Adminkonto:
+username:
+admin@gmail.com
+
+password:
+admin
+
+Userkonto:
+user@gmail.com
+
+password:
+user
+
+Du har även möjlighet att skapa egna konton.
+När du registerar ett konto väljer du själv vilken user-role kontot ska ha.
