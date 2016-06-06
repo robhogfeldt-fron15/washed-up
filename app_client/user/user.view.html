@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12" style="background-color: #AEA8D3; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h3>Inloggad som:</h3>
           <label>Name</label>
           <p class="form-control-static">{{ vm.user.name }}</p>
@@ -10,9 +10,18 @@
           <p class="form-control-static">{{ vm.user.role }}</p>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <h3>Info:</h3>
-          <p>Som admin ansvarar du för att lägga till de tvättmaskiner som finns tillgängliga för hyresgästerna.</p>
+          <p>1. Välj maskin</p>
+          <p>2. Välj Datum</p>
+          <p>3. Välj Tid</p>
+          </div>
+
+        <div class="col-md-4">
+          <h3>Bokningar:</h3>
+          <ul ng-repeat="b in vm.bookings | orderBy:'-'">
+            <li>{{ b.date }}, {{ b.slot }}</li>
+          </ul>
           </div>
 
 

@@ -21,6 +21,7 @@
     meanData.getProfile()
       .success(function(data) {
         vm.user = data;
+        vm.bookings(vm.user._id)
       })
       .error(function(e) {
         console.log(e);
@@ -28,6 +29,15 @@
 
       getSlots();
       getMachines();
+
+      vm.bookings = function(user) {
+
+        Timeslot.getByUser(null, user)
+          .success(function(data) {
+            vm.bookings = data;
+            console.log(data);
+          });
+      }
 
 
      function getSlots() {
@@ -82,15 +92,13 @@
         }
 
         vm.bookSlot = function(slot) {
-         console.log(slot);
-         console.log(vm.activeMachine._id);
-         console.log(vm.slot.name);
+
+        if (!vm.activeMachine || !vm.user || !vm.slot || !vm.slot.name ) {
+          alert('Fyll i alla fält');
+          return;
+        }
 
 
-         if (vm.slot.isTaken) {
-           alert('Upptagen');
-           return;
-         }
          var slot = {
            machineId: vm.activeMachine._id,
            userId: vm.user._id,
@@ -104,7 +112,13 @@
 
            vm.checkDate();
            vm.activeMachine = null;
+           Timeslot.getByUser(null, vm.user._id)
+             .success(function(data) {
+               vm.bookings = data;
+               console.log(data);
+             }.bind(this));
          });
+
        }
 
   }
