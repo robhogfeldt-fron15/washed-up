@@ -13,7 +13,7 @@ module.exports.register = function(req, res) {
 
   user.name = req.body.name;
   user.email = req.body.email;
-  user.role = 'user';
+  user.role = req.body.role;
 
   user.setPassword(req.body.password);
 
@@ -22,7 +22,8 @@ module.exports.register = function(req, res) {
     token = user.generateJwt();
     res.status(200);
     res.json({
-      "token" : token
+      "token" : token,
+      'user' : user
     });
   });
 

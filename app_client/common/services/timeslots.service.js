@@ -19,12 +19,15 @@
       	return $http.get('/api/timeslots/' + machine);
     };
 
+    var getByUser = function (machine, user) {
+        return $http.get('/api/timeslots/' + machine + '/' + user);
+    };
 
     return {
       getTimeslots : getTimeslots,
       createTimeslot: createTimeslot,
-      getByMachine: getByMachine
-
+      getByMachine: getByMachine,
+      getByUser: getByUser,
 
     };
   }

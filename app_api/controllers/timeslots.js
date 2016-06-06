@@ -29,8 +29,19 @@ exports.list = function(req, res) {
 };
 
 exports.getByMachine = function(req, res) {
-	console.log(req.params);
+	console.log(req.body);
 	Timeslot.find({'machineId' : req.params.machineId }, function(err, timeslots) {
+		if (err) {
+		console.log(err);
+		} else {
+			res.json(timeslots);
+		}
+	});
+};
+
+exports.getByUser = function(req, res) {
+console.log(req.params.userId);
+	Timeslot.find({'userId' : req.params.userId }, function(err, timeslots) {
 		if (err) {
 		console.log(err);
 		} else {

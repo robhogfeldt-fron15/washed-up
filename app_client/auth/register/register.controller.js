@@ -11,7 +11,8 @@
     vm.credentials = {
       name : "",
       email : "",
-      password : ""
+      password : "",
+      role: ''
     };
 
     vm.onSubmit = function () {
@@ -21,8 +22,12 @@
         .error(function(err){
           alert(err);
         })
-        .then(function(){
-          $location.path('profile');
+        .then(function(res){
+          if (res.data.user.role === 'admin') {
+            $location.path('profile');
+          } else {
+            $location.path('user');
+          }
         });
     };
 

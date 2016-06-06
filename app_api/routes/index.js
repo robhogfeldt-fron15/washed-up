@@ -18,6 +18,7 @@ router.get('/admin', auth, ctrlAdmin.adminRead);
 
 // users
 router.get('/users', ctrlUsers.list);
+router.get('/users/:timeslots', ctrlUsers.list);
 
 // machines
 router.get('/machines', ctrlMachines.list);
@@ -28,7 +29,7 @@ router.delete('/machines/:machine_id', ctrlMachines.delete);
 router.get('/timeslots', ctrlTimeslots.list);
 router.post('/timeslots', ctrlTimeslots.create);
 router.get('/timeslots/:machineId', ctrlTimeslots.getByMachine);
-
+router.get('/timeslots/:machineId/:userId', ctrlTimeslots.getByUser);
 
 
 // authentication

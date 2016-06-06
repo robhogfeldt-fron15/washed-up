@@ -10,6 +10,7 @@
     var vm = this;
 
     vm.user = {};
+    vm.activeUser = {};
 
     meanData.getProfile()
       .success(function(data) {
@@ -47,12 +48,12 @@
         });
     }
 
-    vm.showUserStat = function(machine) {
-      console.log(machine);
-      Timeslot.getByUser(machine)
+    vm.showUserStat = function(user) {
+      vm.activeUser = user;
+      Timeslot.getByUser(null, user._id)
         .success(function(data) {
           vm.userSlots = data;
-
+          console.log(data);
         });
     }
 
