@@ -52,7 +52,9 @@
       vm.activeUser = user;
       Timeslot.getByUser(null, user._id)
         .success(function(data) {
-          vm.userSlots = data;
+          vm.userSlots = data.filter(function(user) {
+            return user.role !== 'admin'
+          })
           console.log(data);
         });
     }
