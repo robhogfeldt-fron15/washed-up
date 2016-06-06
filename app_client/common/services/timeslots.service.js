@@ -15,9 +15,16 @@
         return $http.post('/api/timeslots', timeslot);
     };
 
+    var getByMachine = function (machine) {
+      	return $http.get('/api/timeslots/' + machine);
+    };
+
+
     return {
       getTimeslots : getTimeslots,
-      createTimeslot: createTimeslot
+      createTimeslot: createTimeslot,
+      getByMachine: getByMachine
+
 
     };
   }

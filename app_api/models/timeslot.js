@@ -5,6 +5,10 @@ module.exports = mongoose.model('Timeslot', {
         type: String,
         default: ''
     },
+    userId: {
+        type: String,
+        default: ''
+    },
     date: {
         type: String,
         default: ''

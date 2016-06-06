@@ -27,6 +27,9 @@ router.delete('/machines/:machine_id', ctrlMachines.delete);
 // timeslots
 router.get('/timeslots', ctrlTimeslots.list);
 router.post('/timeslots', ctrlTimeslots.create);
+router.get('/timeslots/:machineId', ctrlTimeslots.getByMachine);
+
+
 
 // authentication
 router.post('/register', ctrlAuth.register);

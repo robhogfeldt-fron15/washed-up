@@ -4,9 +4,9 @@
     .module('meanApp')
     .controller('adminCtrl', adminCtrl);
 
-  adminCtrl.$inject = ['$location', 'meanData', 'Machines', 'Users'];
+  adminCtrl.$inject = ['$location', 'meanData', 'Machines', 'Users', 'Timeslot'];
 
-  function adminCtrl($location, meanData, Machines, Users) {
+  function adminCtrl($location, meanData, Machines, Users, Timeslot) {
     var vm = this;
 
     vm.user = {};
@@ -43,6 +43,15 @@
         .success(function(data) {
           vm.loading = false;
           vm.getMachines();
+
+        });
+    }
+
+    vm.showUserStat = function(machine) {
+      console.log(machine);
+      Timeslot.getByUser(machine)
+        .success(function(data) {
+          vm.userSlots = data;
 
         });
     }

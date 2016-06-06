@@ -2,29 +2,23 @@
 
 <div class="container">
   <div class="row">
-    {{ vm.user }}
-    <div class="col-md-6">
-
-      <h1 class="form-signin-heading">Your profile</h1>
-
+    <div class="col-md-12" style="background-color: #4183D7; padding: 30px;">
       <form class="form-horizontal">
+        <h3>Inloggad som:</h3>
         <div class="form-group">
-          <label class="col-sm-3 control-label">Name</label>
+          <label>Name</label>
           <p class="form-control-static">{{ vm.user.name }}</p>
         </div>
         <div class="form-group">
-          <label class="col-sm-3 control-label">Role</label>
-          <p class="form-control-static">{{ vm.user.email }}</p>
+          <label>Role</label>
+          <p class="form-control-static">{{ vm.user.role }}</p>
         </div>
       </form>
 
     </div>
 
     <div class="col-md-6" ng-controller="adminCtrl as vm">
-
       <h1 class="form-signin-heading">Tvättmaskiner</h1>
-      <button ng-click="vm.getMachines()">Say ddddi</button>
-      <button ng-click="vm.deleteMachine()">Say Hi</button>
       <table class="table table-condensed table-striped">
         <thead>
           <tr>
@@ -42,27 +36,6 @@
           </tr>
         </tbody>
       </table>
-
-
-      <h1 class="form-signin-heading">Användare</h1>
-      <table class="table table-condensed table-striped">
-        <thead>
-          <tr>
-            <th>Namn</th>
-            <th>Mail</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="u in vm.allUsers track by $index">
-            <td>{{u.name}}</td>
-            <td>{{u.email}}</td>
-            <td>
-              <button class="btn-warning pull-right" ng-click="vm.deleteMachine(w._id)">Ta bort</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
       <form class="form-horizontal" ng-submit="vm.createMachine(vm.machine)">
         <fieldset>
           <div class="form-group">
@@ -85,7 +58,27 @@
           </div>
         </fieldset>
       </form>
-
+</div>
+<div class="col-md-6" ng-controller="adminCtrl as vm">
+      <h1 class="form-signin-heading">Användare</h1>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th>Namn</th>
+            <th>Mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="u in vm.allUsers track by $index">
+            <td>{{u.name}}</td>
+            <td>{{u.email}}</td>
+              <td>{{u._id}}</td>
+            <td>
+              <button class="btn-info pull-right" ng-click="vm.showUserStat(u)">Info</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
   </div>

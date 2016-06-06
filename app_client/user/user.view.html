@@ -1,8 +1,8 @@
 <navigation></navigation>
-
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+
+    <div class="col-md-6">
       <h2>Välj maskin</h2>
       <table class="table table-condensed table-striped">
         <thead>
@@ -19,45 +19,45 @@
           </tr>
         </tbody>
       </table>
+      <h2>Välj Datum</h2>
+
+      <input class="form-control" type="date" ng-model="vm.slot.date" ng-change="vm.checkDate()">
+
+      <h2>Välj Tidpunkt</h2>
+
+      <div ng-repeat="slot in vm.slotArray">
+        <label>
+          <input type="radio" ng-model="vm.slot.name" ng-value="slot.name" ng-change="vm.radioChange( slot )" ng-disabled="slot.isTaken"/>
+
+          {{slot.name}}
+          -
+          <span>{{slot.isTaken ? 'Bokad' : 'Ledig'}}</span>
+        </label>
+      </div>
+
+    </div>
+    <div class="col-md-6" style="background-color: #52B3D9; border-radius: 10px; padding: 10px;">
+      <h2>Din bokning</h2>
+
+      <ul>
+        <li>
+        Maskin:  {{ vm.activeMachine.name }}
+        </li>
+        <li>
+        Datum:  {{ vm.slot.date }}
+        </li>
+        <li>
+        Tidpunkt  {{ vm.slot.name }}
+        </li>
+      </ul>
+      <button class="btn-success form-control" ng-class="{'btn-warning disabled': vm.slot.date == 'undefined'}" ng-click="vm.bookSlot(vm.slot)">Boka!</button>
+
+    </div>
+    <div class="col-md-4">
+      <img src="http://worldartsme.com/images/funny-washing-machine-clipart-1.jpg" class="img-responsive">
     </div>
     <hr>
-    <div class="col-md-12" ng-show="vm.activeMachine !== null">
 
-      <div class="col-md-4" style="background-color: #52B3D9; border-radius: 10px; padding: 30px;">
-        <h2>Välj Datum</h2>
-
-        <input class="form-control" type="date" ng-model="vm.slot.date" ng-change="vm.checkDate()">
-        <div ng-repeat="slot in vm.slotArray">
-          <label>
-            <input type="radio" ng-model="vm.slot.name" ng-value="slot.name" ng-change="vm.radioChange( slot )" ng-disabled="slot.isTaken"/>
-
-            {{slot.name}}
-            -
-            <span>{{slot.isTaken ? 'Bokad' : 'Ledig'}}</span>
-          </label>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <img src="http://worldartsme.com/images/funny-washing-machine-clipart-1.jpg" class="img-responsive">
-      </div>
-
-      <div class="col-md-4" style="background-color: #52B3D9; border-radius: 10px; padding: 30px;">
-        <h2>Din bokning</h2>
-
-        <ul>
-          <li>
-            {{ vm.activeMachine.name }}
-          </li>
-          <li>
-            {{ vm.slot.date }}
-          </li>
-          <li>
-            {{ vm.slot.name }}
-          </li>
-        </ul>
-        <button class="btn-success form-control" ng-class="{'btn-warning disabled': vm.slot.date == 'undefined'}" ng-click="vm.bookSlot(vm.slot)">Boka!</button>
-      </div>
-    </div>
   </div>
 </div>
 </div>

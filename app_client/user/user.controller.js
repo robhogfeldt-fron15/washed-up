@@ -28,7 +28,7 @@
 
       getSlots();
       getMachines();
-  
+
 
      function getSlots() {
        Timeslot.getTimeslots()
@@ -58,16 +58,15 @@
           vm.slotArray.push({name:"kvall", isTaken:false });
 
           var takenSlots = [];
-          Timeslot.getTimeslots()
+            Timeslot.getByMachine(vm.activeMachine._id)
               .success(function(slots) {
-
 
                   takenSlots = slots.filter(function(slot) {
                     console.log(slot , vm.slot.date.toLocaleDateString());
-                    return slot.date === vm.slot.date.toLocaleDateString()
+                    return slot.date === vm.slot.date.toLocaleDateString();
                   });
+
                    for (var i = 0; i < takenSlots.length; i++) {
-                    console.log('TAKEN SLOT', takenSlots[i].slot);
                     vm.slotArray.filter(function functionName(item) {
                       if (item.name === takenSlots[i].slot ) {
                          item.isTaken = true;
@@ -77,7 +76,7 @@
                      }
                     })
                   }
-                  console.log(vm.slotArray);
+                  console.log(takenSlots);
               });
 
         }
@@ -94,6 +93,7 @@
          }
          var slot = {
            machineId: vm.activeMachine._id,
+           userId: vm.user._id,
            date: vm.slot.date.toLocaleDateString(),
            slot: vm.slot.name,
            isTaken: true
@@ -101,9 +101,9 @@
 
          Timeslot.createTimeslot(slot)
          .success(function(data) {
-           vm.loading = false;
-           console.log(data);
 
+           vm.checkDate();
+           vm.activeMachine = null;
          });
        }
 
