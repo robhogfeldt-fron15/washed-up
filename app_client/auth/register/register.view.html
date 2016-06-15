@@ -29,6 +29,7 @@
           <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
         </div>
         <button type="submit" class="btn btn-default">Register!</button>
+        <h2 ng-show="vm.showError" style="color: red">{{ vm.errorMessage }}</h2>
       </form>
     </div>
   </div>
