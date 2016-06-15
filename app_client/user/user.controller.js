@@ -11,9 +11,11 @@
 
     vm.user = {};
     vm.activeMachine = null;
+    vm.showDates = false;
 
     vm.showSchedule = function(machine) {
-         vm.activeMachine = machine
+         vm.activeMachine = machine;
+         vm.showDates = true;
          console.log(machine);
      };
 
@@ -118,6 +120,8 @@
                console.log(data);
              }.bind(this));
          });
+
+         vm.showDates = false;
 
        }
 

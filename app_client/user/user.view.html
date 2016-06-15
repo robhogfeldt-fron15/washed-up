@@ -38,30 +38,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="w in vm.machines track by $index" ng-click="vm.showSchedule(w)">
+          <tr ng-repeat="w in vm.machines track by $index" ng-click="vm.showSchedule(w)" class="pointer">
             <td>{{w.name}}</td>
             <td>{{w.description}}</td>
           </tr>
         </tbody>
       </table>
-      <h2>Välj Datum</h2>
 
-      <input class="form-control" type="date" ng-model="vm.slot.date" ng-change="vm.checkDate()">
+      <div ng-show="vm.showDates">
 
-      <h2>Välj Tidpunkt</h2>
+        <h2>Välj Datum</h2>
 
-      <div ng-repeat="slot in vm.slotArray">
-        <label>
-          <input type="radio" ng-model="vm.slot.name" ng-value="slot.name" ng-change="vm.radioChange( slot )" ng-disabled="slot.isTaken"/>
+        <input class="form-control" type="date" ng-model="vm.slot.date" ng-change="vm.checkDate()">
 
-          {{slot.name}}
-          -
-          <span>{{slot.isTaken ? 'Bokad' : 'Ledig'}}</span>
-        </label>
+        <h2>Välj Tidpunkt</h2>
+
+        <div ng-repeat="slot in vm.slotArray">
+          <label>
+            <input type="radio" ng-model="vm.slot.name" ng-value="slot.name" ng-change="vm.radioChange( slot )" ng-disabled="slot.isTaken"/>
+
+            {{slot.name}}
+            -
+            <span>{{slot.isTaken ? 'Bokad' : 'Ledig'}}</span>
+          </label>
+        </div>
+
       </div>
 
+
     </div>
-    <div class="col-md-6" style="background-color: #52B3D9; border-radius: 10px; padding: 10px;">
+    <div ng-show="vm.showDates" class="col-md-6" style="background-color: #52B3D9; border-radius: 10px; padding: 10px;">
       <h2>Din bokning</h2>
 
       <ul>
